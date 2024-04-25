@@ -1,0 +1,54 @@
+.item {
+	&:not(:last-child) {
+		margin-bottom: 8px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #46d2ff;
+	}
+}
+
+.info {
+	display: grid;
+	grid-template-columns: 40px 1fr 80px;
+	gap: 8px;
+	align-items: center;
+}
+
+.actions {
+	margin-top: 8px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.actionButton {
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+}
+
+.removeButton {
+	margin-left: auto;
+}
+
+.image {
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+.name {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.price {
+	font-size: 14px;
+	line-height: 1;
+	color: #000234;
+	text-align: right;
+}
