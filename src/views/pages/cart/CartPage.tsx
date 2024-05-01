@@ -8,7 +8,7 @@ export const CartPage: FC = () => {
 	const { items } = useCart()
 
 	return <Container>
-		<div className={ styles.title }>cart</div>
+		<div className={ styles.title }>Ваше замовлення</div>
 
 		<div className={ styles.list }>
 			{ items.map(item => (<CartItem cartItem={ item } key={ item.ID }/>)) }

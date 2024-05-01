@@ -1,0 +1,93 @@
+.wrapper {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 10;
+	background-color: #fff;
+	border-top: 1px solid #b1b2b7;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 4px;
+}
+
+.bottom {
+	padding: 0 15px 4px;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+}
+
+.progress {
+	flex-grow: 1;
+	background-color: #f1f2f4;
+	border-radius: 8px;
+	height: 16px;
+	padding: 4px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+
+	&.fat {
+		padding: 0;
+	}
+}
+
+.progressBar {
+	height: 100%;
+	border-radius: 8px;
+	width: 0;
+	background-color: #a0e8ff;
+	transition: 0.3s width ease-in;
+}
+
+.freeDeliveryText {
+	position: absolute;
+	font-size: 12px;
+	line-height: 16px;
+	left: 6px;
+	top: 0;
+	color: #000234;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.price {
+	position: absolute;
+	right: 4px;
+	top: 0;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #000234;
+}
+
+.button {
+	height: 46px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #b3ff92;
+	font-size: 14px;
+	color: #000234;
+	border-radius: 8px;
+	font-weight: 500;
+
+	&:disabled {
+		background-color: #f0ffe9;
+		text-transform: lowercase;
+	}
+}

@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 				<App/>
 
 				<ReactQueryDevtools
-					buttonPosition={ 'bottom-left' }
+					buttonPosition={ 'top-right' }
 					initialIsOpen={ false }
 					position={ 'bottom' }
 				/>

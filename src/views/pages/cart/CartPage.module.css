@@ -1,7 +1,8 @@
 .title {
 	font-size: 18px;
-	line-height: 1;
+	line-height: 20px;
 	font-weight: 700;
+	color: #000234;
 }
 
 .list {
