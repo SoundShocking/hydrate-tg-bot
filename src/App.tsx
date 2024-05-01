@@ -6,6 +6,10 @@ import { useEffect } from "react";
 function App() {
 	const { tg, user} = useTelegram()
 
+	const onBackClick = () => {
+		console.log('on back click')
+	}
+
 	console.log(user, tg.isExpanded)
 
 	useEffect(() => {
@@ -14,6 +18,8 @@ function App() {
 		tg.expand()
 
 		tg.BackButton.show()
+
+		tg.onEvent('backButtonClicked', onBackClick)
 	}, []);
 
 	return (
