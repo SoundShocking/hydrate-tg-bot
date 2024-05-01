@@ -12,6 +12,8 @@ function App() {
 		tg.ready()
 
 		tg.expand()
+
+		tg.BackButton.show()
 	}, []);
 
 	return (
