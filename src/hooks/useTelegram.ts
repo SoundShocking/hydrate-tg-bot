@@ -1,3 +1,4 @@
+//@ts-ignore-next-line
 const tg = window.Telegram.WebApp;
 
 export function useTelegram() {
