@@ -4,12 +4,14 @@ import { useTelegram } from "@/hooks";
 import { useEffect } from "react";
 
 function App() {
-	const { tg, user } = useTelegram()
+	const { tg, user} = useTelegram()
 
-	console.log(user)
+	console.log(user, tg.isExpanded)
 
 	useEffect(() => {
 		tg.ready()
+
+		tg.expand()
 	}, []);
 
 	return (
