@@ -13,7 +13,7 @@ function App() {
 		// tg.showAlert('test1337')
 		//
 		// alert('1337')
-		navigate(-1)
+		// navigate(-1)
 	}
 
 	const oInvoiceClose = (event: { slug: string, status: string }) => {
