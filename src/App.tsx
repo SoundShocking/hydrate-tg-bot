@@ -9,39 +9,36 @@ function App() {
 	const [isExpanded, expand] = useExpand()
 	// const navigate = useNavigate()
 
-	// const onBackClick = () => {
-	// 	console.log('on back click')
-	//
-	// 	// tg.showAlert('test1337')
-	// 	//
-	// 	// alert('1337')
-	// 	// navigate(-1)
-	// }
-	//
-	// const oInvoiceClose = (event: { slug: string, status: string }) => {
-	// 	if (event.status === 'paid') {
-	// 		close()
-	// 	}
-	// }
+	const onBackClick = () => {
+		console.log('on back click')
+
+		// tg.showAlert('test1337')
+		//
+		// alert('1337')
+		// navigate(-1)
+	}
+
+	const oInvoiceClose = (event: { slug: string, status: string }) => {
+		if (event.status === 'paid') {
+			close()
+		}
+	}
 
 	useEffect(() => {
 		WebApp.ready()
 
 		WebApp.BackButton.show()
 
-		// tg.ready()
-
-		// tg.expand()
-
-		// tg.BackButton.show()
+		WebApp.onEvent('backButtonClicked', onBackClick)
+		WebApp.onEvent('invoiceClosed', oInvoiceClose)
 
 		// tg.onEvent('backButtonClicked', onBackClick)
 
 		// tg.onEvent('invoiceClosed', oInvoiceClose)
 
 		return () => {
-			// tg.offEvent('backButtonClicked', onBackClick)
-			// tg.offEvent('invoiceClosed', oInvoiceClose)
+			WebApp.offEvent('backButtonClicked', onBackClick)
+			WebApp.offEvent('invoiceClosed', oInvoiceClose)
 		}
 	}, []);
 
