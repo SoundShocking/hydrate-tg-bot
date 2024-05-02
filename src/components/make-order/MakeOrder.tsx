@@ -27,6 +27,10 @@ export const MakeOrder: FC = () => {
 
 			const res = await axios.post<{ link: string }>('https://f7c1-185-35-100-55.ngrok-free.app/create-invoice-link', {
 				items
+			}, {
+				headers: {
+					'ngrok-skip-browser-warning': 1337
+				}
 			})
 
 			tg.openInvoice(res.data.link)
