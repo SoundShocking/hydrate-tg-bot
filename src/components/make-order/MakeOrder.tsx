@@ -8,10 +8,10 @@ import { TruckIcon } from "@/components/TruckIcon";
 import { clsx } from "clsx";
 import { CURRENCY_SYMBOL, FREE_DELIVERY_THRESHOLD } from "@/constants";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useTelegram } from "@/hooks";
+import { useWebApp } from "@vkruglikov/react-telegram-web-app";
 
 export const MakeOrder: FC = () => {
-	const { tg } = useTelegram()
+	const WebApp = useWebApp()
 	const { totalPrice, items } = useCart()
 	const { pathname } = useLocation()
 	const navigate = useNavigate()
@@ -21,10 +21,12 @@ export const MakeOrder: FC = () => {
 
 	const onMareOrderClick = async () => {
 		if (pathname !== '/cart') {
-			navigate('cart')
+			navigate('cart', {
+				state: {
+					isShowBack: true
+				}
+			})
 		} else {
-			console.log('else')
-
 			const res = await axios.post<{ link: string }>('https://f7c1-185-35-100-55.ngrok-free.app/create-invoice-link', {
 				items
 			}, {
@@ -33,7 +35,8 @@ export const MakeOrder: FC = () => {
 				}
 			})
 
-			tg.openInvoice(res.data.link)
+			// tg.openInvoice(res.data.link)
+			WebApp.openInvoice(res.data.link)
 		}
 	}
 

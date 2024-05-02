@@ -14,7 +14,9 @@ export const CategoriesPage: FC = () => {
 
 		<div className={ styles.categories }>
 			{ data?.categories.map(category => (
-				<Link to={ `/categories/${ category.id }` } key={ category.id } className={ styles.category }>
+				<Link to={ `/categories/${ category.id }` } state={ { isShowBack: true } } key={ category.id }
+							className={ styles.category }
+				>
 					<div className={ styles.image }>
 						<img src={ category.image } alt=""/>
 					</div>
