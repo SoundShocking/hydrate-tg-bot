@@ -4,10 +4,18 @@ import { useTelegram } from "@/hooks";
 import { useEffect } from "react";
 
 function App() {
-	const { tg, user} = useTelegram()
+	const { tg, user, close } = useTelegram()
 
 	const onBackClick = () => {
 		console.log('on back click')
+
+		alert('1337')
+	}
+
+	const oInvoiceClose = (event: { slug: string, status: string }) => {
+		if (event.status === 'paid') {
+			close()
+		}
 	}
 
 	console.log(user, tg.isExpanded)
@@ -20,6 +28,8 @@ function App() {
 		tg.BackButton.show()
 
 		tg.onEvent('backButtonClicked', onBackClick)
+
+		tg.onEvent('invoiceClosed', oInvoiceClose)
 	}, []);
 
 	return (
