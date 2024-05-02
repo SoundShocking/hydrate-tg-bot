@@ -25,7 +25,7 @@ export const MakeOrder: FC = () => {
 		} else {
 			console.log('else')
 
-			const res = await axios.post<{ link: string }>('http://localhost:3000/create-invoice-link', {
+			const res = await axios.post<{ link: string }>('https://hydrate-tg-bot-back.vercel.app/create-invoice-link', {
 				items
 			})
 
