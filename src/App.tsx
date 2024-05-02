@@ -1,11 +1,13 @@
-import { RouterProvider, useNavigate } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { router } from "@/router";
 import { useTelegram } from "@/hooks";
 import { useEffect } from "react";
+import { useExpand } from "@vkruglikov/react-telegram-web-app";
 
 function App() {
 	const { tg, user, close } = useTelegram()
-	const navigate = useNavigate()
+	const [isExpanded, expand] = useExpand()
+	// const navigate = useNavigate()
 
 	const onBackClick = () => {
 		console.log('on back click')
@@ -13,7 +15,7 @@ function App() {
 		// tg.showAlert('test1337')
 		//
 		// alert('1337')
-		navigate(-1)
+		// navigate(-1)
 	}
 
 	const oInvoiceClose = (event: { slug: string, status: string }) => {
@@ -27,7 +29,7 @@ function App() {
 	useEffect(() => {
 		tg.ready()
 
-		tg.expand()
+		// tg.expand()
 
 		tg.BackButton.show()
 
@@ -40,6 +42,12 @@ function App() {
 			tg.offEvent('invoiceClosed', oInvoiceClose)
 		}
 	}, []);
+
+	useEffect(() => {
+		if(!isExpanded) {
+			expand()
+		}
+	}, [isExpanded]);
 
 	return (
 		<RouterProvider router={ router }/>
