@@ -16,7 +16,7 @@ export const MainLayout: FC = () => {
 	}
 
 	useEffect(() => {
-		if (state.isShowBack) {
+		if (state?.isShowBack) {
 			WebApp.BackButton.show()
 		} else {
 			WebApp.BackButton.hide()
