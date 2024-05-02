@@ -39,8 +39,9 @@ export const MainLayout: FC = () => {
 
 	return <>
 		<header>
-			<Link to={ '/' }>header</Link>
-			<Link to={ '/cart' }>cart</Link>
+			<Link to={ '/' } state={ { isShowBack: false } }>header</Link>
+			<Link to={ '/cart' } state={ { isShowBack: true } }>cart</Link>
+			<Link to={ '/categories' } state={ { isShowBack: true } }>Categories</Link>
 		</header>
 
 		<main className={ styles.main }>
