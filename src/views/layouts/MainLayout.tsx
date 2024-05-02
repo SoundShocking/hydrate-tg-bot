@@ -1,9 +1,9 @@
 import { FC, useEffect } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MakeOrder } from "@/components/make-order";
+import { useExpand, useWebApp } from "@vkruglikov/react-telegram-web-app";
 
 import styles from './MainLayout.module.css'
-import { useExpand, useWebApp } from "@vkruglikov/react-telegram-web-app";
 
 export const MainLayout: FC = () => {
 	const { state } = useLocation()
