@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 function App() {
 	const { tg, user, close } = useTelegram()
-	const navigate = useNavigate()
+	// const navigate = useNavigate()
 
 	const onBackClick = () => {
 		console.log('on back click')
