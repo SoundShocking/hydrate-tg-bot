@@ -9,6 +9,8 @@ function App() {
 	const onBackClick = () => {
 		console.log('on back click')
 
+		tg.showAlert('test1337')
+
 		alert('1337')
 	}
 
