@@ -1,4 +1,5 @@
 import { FC } from "react";
+import axios from 'axios'
 
 import styles from './MakeOrder.module.scss'
 import { useCart } from "@/store";
@@ -7,20 +8,28 @@ import { TruckIcon } from "@/components/TruckIcon";
 import { clsx } from "clsx";
 import { CURRENCY_SYMBOL, FREE_DELIVERY_THRESHOLD } from "@/constants";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTelegram } from "@/hooks";
 
 export const MakeOrder: FC = () => {
-	const { totalPrice } = useCart()
+	const { tg } = useTelegram()
+	const { totalPrice, items } = useCart()
 	const { pathname } = useLocation()
 	const navigate = useNavigate()
 
 	const isLessThanThreshold = totalPrice < FREE_DELIVERY_THRESHOLD
 	const isGreaterThanThreshold = totalPrice >= FREE_DELIVERY_THRESHOLD
 
-	const onMareOrderClick = () => {
+	const onMareOrderClick = async () => {
 		if (pathname !== '/cart') {
 			navigate('cart')
 		} else {
 			console.log('else')
+
+			const res = await axios.post<{ link: string }>('http://localhost:3000/create-invoice-link', {
+				items
+			})
+
+			tg.openInvoice(res.data.link)
 		}
 	}
 
