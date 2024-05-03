@@ -27,12 +27,12 @@ export const MakeOrder: FC = () => {
 				}
 			})
 		} else {
-			const res = await instance.post<{ link: string }>('/orders', {
+			const res = await instance.post<{ payment_link: { ok: boolean, result: string } }>('/orders', {
 				items
 			})
 
 			// tg.openInvoice(res.data.link)
-			WebApp.openInvoice(res.data.link)
+			WebApp.openInvoice(res.data.payment_link.result)
 		}
 	}
 
