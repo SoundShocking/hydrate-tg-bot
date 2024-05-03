@@ -1,5 +1,4 @@
 import { FC } from "react";
-import axios from 'axios'
 
 import styles from './MakeOrder.module.scss'
 import { useCart } from "@/store";
@@ -9,6 +8,7 @@ import { clsx } from "clsx";
 import { CURRENCY_SYMBOL, FREE_DELIVERY_THRESHOLD } from "@/constants";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useWebApp } from "@vkruglikov/react-telegram-web-app";
+import instance from "@/services/api/instance";
 
 export const MakeOrder: FC = () => {
 	const WebApp = useWebApp()
@@ -27,7 +27,7 @@ export const MakeOrder: FC = () => {
 				}
 			})
 		} else {
-			const res = await axios.post<{ link: string }>('https://f7c1-185-35-100-55.ngrok-free.app/create-invoice-link', {
+			const res = await instance.post<{ link: string }>('/orders', {
 				items
 			}, {
 				headers: {
