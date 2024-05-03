@@ -29,10 +29,6 @@ export const MakeOrder: FC = () => {
 		} else {
 			const res = await instance.post<{ link: string }>('/orders', {
 				items
-			}, {
-				headers: {
-					'ngrok-skip-browser-warning': 1337
-				}
 			})
 
 			// tg.openInvoice(res.data.link)
