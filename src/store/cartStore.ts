@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { ICartItem } from "@/types";
+import { notification } from "antd";
 
 interface CartStore {
 	items: ICartItem[]
@@ -49,8 +50,16 @@ export const useCart = create<CartStore>()(
 				const cartItem = state.items.find(item => item.ID === id)
 
 				if (cartItem) {
-					cartItem.count++
-					state.totalPrice = calcCartTotalPrice(state.items)
+					const newCount = cartItem.count + 1
+
+					if (cartItem.stock > 0 && newCount > cartItem.stock) {
+						notification.error({
+							message: 'cannot add'
+						})
+					} else {
+						cartItem.count++
+						state.totalPrice = calcCartTotalPrice(state.items)
+					}
 				}
 			})
 		},

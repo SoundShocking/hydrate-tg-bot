@@ -6,6 +6,7 @@ export interface IProduct {
 	sale_price: number
 	price: number
 	categories_ids: number[]
+	stock: number
 }
 
 export interface ICartItem extends IProduct {
