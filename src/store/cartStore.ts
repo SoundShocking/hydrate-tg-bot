@@ -54,7 +54,9 @@ export const useCart = create<CartStore>()(
 
 					if (cartItem.stock > 0 && newCount > cartItem.stock) {
 						notification.error({
-							message: 'cannot add'
+							message: `в наявності лише ${cartItem.stock} одиниць`,
+							key: `out_of_stock_${cartItem.ID}`,
+							duration: 3
 						})
 					} else {
 						cartItem.count++
