@@ -22,7 +22,14 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<ConfigProvider>
+		<ConfigProvider theme={ {
+			components: {
+				Spin: {
+					colorPrimary: '#67daff'
+				}
+			}
+		} }
+		>
 			<QueryClientProvider client={ queryClient }>
 				<App/>
 

@@ -50,7 +50,7 @@ export const Product: FC<Props> = ({ product }) => {
 						<PlusIcon/>
 					</button>
 				</>) : (
-				<button className={ styles.addToCart } onClick={ onClickAdd }>
+				<button className={ clsx('btn', styles.addToCart) } onClick={ onClickAdd }>
 					<PlusIcon/>
 
 					Додати
