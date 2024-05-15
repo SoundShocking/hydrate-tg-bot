@@ -5,26 +5,23 @@ on:
     branches:
       - dev
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Install and Build 🔧
+        run: |
+          yarn install --frozen-lockfile
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          node-version: '20'
-
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build Application
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.6.0
-        with:
-          folder: dist
-          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: build
